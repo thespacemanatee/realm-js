@@ -21,6 +21,14 @@ x.x.x Release notes (yyyy-MM-dd)
 * <Either mention core version or upgrade>
 * <Using Realm Core vX.Y.Z>
 * <Upgraded Realm Core from vX.Y.Z to vA.B.C>
+* Switching from NDK 21 to NDK 23 for Android builds. Sizes of binaries are found below. ([#3905](https://github.com/realm/realm-js/issues/3905))
+
+| Architecture | NDK 21      | NDK 23      |
+|--------------|-------------|-------------|
+| armeabi-v7a  |     5669208 |     5604472 |
+| x86          |    10088204 |    10925996 |
+| arm64-v8a    |     9301128 |     9724656 |
+| x86_64       |    10371064 |    10702472 |
 
 10.19.1 Release notes (2022-6-7)
 =============================================================

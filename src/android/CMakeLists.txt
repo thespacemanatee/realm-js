@@ -7,9 +7,9 @@ add_library(realm-js-android SHARED
     jsc_override.cpp
 )
 
-set_target_properties(realm-js-android PROPERTIES 
+set_target_properties(realm-js-android PROPERTIES
     OUTPUT_NAME "realm"
-    PREFIX "lib" 
+    PREFIX "lib"
     SUFFIX ".so"
 )
 
@@ -42,7 +42,7 @@ if(NOT EXISTS ${JSC_LIB_FILE})
     if (NOT "${status_code}" STREQUAL "0")
         message(FATAL_ERROR "Downloading ${url}... Failed. Status: ${download_status}")
     endif()
-    
+
     message(STATUS "Uncompressing ${JSC_ROOT_DIR}/jsc-android-241213.1.0.tgz")
     execute_process(
         COMMAND ${CMAKE_COMMAND} -E tar xfz "jsc-android-241213.1.0.tgz"
@@ -63,7 +63,14 @@ else()
     target_compile_definitions(realm-js-android PUBLIC REALM_WRAP_MEMMOVE=0)
 endif()
 
+set(CMAKE_CXX_FLAGS_RELEASE "-DNDEBUG -O2")
+
 target_link_options(realm-js-android PUBLIC  -fvisibility=hidden)
+
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(REALM_LINKER_FLAGS "${REALM_LINKER_FLAGS} -Wl,-gc-sections -Wl,--exclude-libs,ALL")
+endif()
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${REALM_LINKER_FLAGS}")
 
 if(REALM_JS_BUILD_CORE_FROM_SOURCE AND TARGET ObjectStore)
     target_compile_definitions(ObjectStore PUBLIC
