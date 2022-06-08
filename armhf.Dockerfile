@@ -13,6 +13,7 @@ RUN apt-get install -y \
         ninja-build \
         nodejs \
         libnode-dev:armhf \
+        ninja-build \
         npm \
         qemu-user
 
@@ -29,8 +30,8 @@ RUN mkdir -p $NVM_DIR \
  && chmod a+rwX -R $NVM_DIR
 
 # Ensure a new enough version of CMake is available.
-RUN cd /opt \
-    && curl -O -J https://cmake.org/files/v3.15/cmake-3.15.2-Linux-x86_64.tar.gz \
-    && tar zxf cmake-3.15.2-Linux-x86_64.tar.gz
-
-ENV PATH "/opt/cmake-3.15.2-Linux-x86_64/bin:$PATH"
+RUN mkdir -p /home/jenkins/cmake && \
+    cd /home/jenkins/cmake && \
+    curl -O -J https://cmake.org/files/v3.23/cmake-3.23.2-linux-x86_64.tar.gz &&\
+    tar zxf cmake-3.23.2-linux-x86_64.tar.gz
+ENV PATH "/home/jenkins/cmake/cmake-3.23.2-linux-x86_64/bin:$PATH"
