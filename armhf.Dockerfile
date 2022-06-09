@@ -1,4 +1,4 @@
-FROM debian:10
+FROM debian:11
 
 RUN dpkg --add-architecture armhf && apt-get update
 RUN apt-get install -y \
@@ -14,7 +14,6 @@ RUN apt-get install -y \
         nodejs \
         libnode-dev:armhf \
         ninja-build \
-        npm \
         qemu-user
 
 
@@ -23,10 +22,7 @@ ENV NVM_DIR /tmp/.nvm
 RUN mkdir -p $NVM_DIR \
  && curl -s https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash \
  && . $NVM_DIR/nvm.sh \
- && nvm install 10 \
- && nvm install 12 \
- && nvm install 13 \
- && nvm install 14 \
+ && nvm install 16 \
  && chmod a+rwX -R $NVM_DIR
 
 # Ensure a new enough version of CMake is available.
