@@ -243,11 +243,12 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
+      - uses: seanmiddleditch/gha-setup-ninja@master
       - name: Install npm v7
         run: npm install -g npm@7
       # Setup tools
       - name: Install tools
-        run: brew install watchman ninja
+        run: brew install watchman
 
       # Caches
       - uses: actions/cache@v2
