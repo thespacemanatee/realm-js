@@ -247,7 +247,7 @@ jobs:
         run: npm install -g npm@7
       # Setup tools
       - name: Install tools
-        run: brew install watchman
+        run: brew install watchman ninja
 
       # Caches
       - uses: actions/cache@v2
