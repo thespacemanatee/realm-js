@@ -13,7 +13,6 @@ RUN apt-get install -y \
         ninja-build \
         nodejs \
         libnode-dev:armhf \
-        ninja-build \
         qemu-user
 
 
