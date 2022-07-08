@@ -14,9 +14,7 @@ x.x.x Release notes (yyyy-MM-dd)
 * File format: generates Realms with format v22 (reads and upgrades file format v5 or later for non-synced Realm, upgrades file format v10 or later for synced Realms).
 
 ### Internal
-<!-- * Either mention core version or upgrade -->
-<!-- * Using Realm Core vX.Y.Z -->
-<!-- * Upgraded Realm Core from vX.Y.Z to vA.B.C -->
+* Fixed a crash on Android when an error was thrown from the flexible sync `initialSubscriptions` call ([#4710](https://github.com/realm/realm-js/pull/4710), since v10.18.0)
 
 10.19.5 Release notes (2022-7-6)
 =============================================================
